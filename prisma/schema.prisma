@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Model for genres
+// A book must belong to a genre.
+model Genre {
+  id      String   @id @default(uuid()) @db.Uuid
+  name    String   @unique
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+  books   Book[]
+
+  @@map("genre_tbl")
+}
+
+// Model for authors
+// Authors can write reviews for books.
+model Author {
+  id       String    @id @default(uuid()) @db.Uuid
+  name     String    @unique
+  verified Boolean   @default(false)
+  created  DateTime  @default(now())
+  updated  DateTime  @updatedAt
+  reviews  Review[]
+
+  @@map("author_tbl")
+}
+
+// Model for books
+// Books have a title, description, and belong to a single genre.
+model Book {
+  id          String    @id @default(uuid()) @db.Uuid
+  title       String
+  description String?
+  genreId     String    @map("genre_id") @db.Uuid
+  created     DateTime  @default(now())
+  updated     DateTime  @updatedAt
+  genre       Genre     @relation(fields: [genreId], references: [id], onDelete: Restrict)
+  reviews     Review[]
+
+  @@map("book_tbl")
+}
+
+// Model for reviews
+// Reviews are written by authors for a specific book.
+model Review {
+  id       String   @id @default(uuid()) @db.Uuid
+  // The SQL schema has a CHECK constraint for rating (1-10).
+  // Prisma doesn't support CHECK constraints directly in the schema.
+  // You can add this with a custom migration or handle validation in your application.
+  rating   Int
+  content  String
+  authorId String   @map("author_id") @db.Uuid
+  bookId   String   @map("book_id") @db.Uuid
+  created  DateTime @default(now())
+  updated  DateTime @updatedAt
+  author   Author   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  book     Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@map("review_tbl")
+}

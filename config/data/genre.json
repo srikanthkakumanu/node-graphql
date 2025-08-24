@@ -1,0 +1,25 @@
+{
+  "genres": [
+    { "name": "Fiction" },
+    { "name": "Science Fiction" },
+    { "name": "Fantasy" },
+    { "name": "Mystery" },
+    { "name": "Thriller" },
+    { "name": "Historical Fiction" },
+    { "name": "Horror" },
+    { "name": "Romance" },
+    { "name": "Contemporary" },
+    { "name": "Young Adult" },
+    { "name": "Dystopian" },
+    { "name": "Crime" },
+    { "name": "Non-Fiction" },
+    { "name": "Biography" },
+    { "name": "Autobiography" },
+    { "name": "Self-Help" },
+    { "name": "Memoir" },
+    { "name": "Health" },
+    { "name": "Travel" },
+    { "name": "Philosophy" },
+    { "name": "Religion" }
+  ]
+}

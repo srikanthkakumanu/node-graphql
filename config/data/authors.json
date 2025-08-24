@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "name": "J.R.R. Tolkien",
+    "verified": true
+  },
+  {
+    "id": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d1e",
+    "name": "George Orwell",
+    "verified": true
+  },
+  {
+    "id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d1e2f",
+    "name": "Agatha Christie",
+    "verified": true
+  },
+  {
+    "id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d1e2f3a",
+    "name": "Stephen King",
+    "verified": true
+  },
+  {
+    "id": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d1e2f3a4b",
+    "name": "Jane Austen",
+    "verified": true
+  },
+  {
+    "id": "6f7a8b9c-0d1e-2f3a-4b5c-6d1e2f3a4b5c",
+    "name": "Isaac Asimov",
+    "verified": true
+  },
+  {
+    "id": "7a8b9c0d-1e2f-3a4b-5c6d-1e2f3a4b5c6d",
+    "name": "Neil Gaiman",
+    "verified": true
+  },
+  {
+    "id": "8b9c0d1e-2f3a-4b5c-6d1e-2f3a4b5c6d1e",
+    "name": "Brandon Sanderson",
+    "verified": true
+  },
+  {
+    "id": "9c0d1e2f-3a4b-5c6d-1e2f-3a4b5c6d1e2f",
+    "name": "Gillian Flynn",
+    "verified": true
+  },
+  {
+    "id": "0d1e2f3a-4b5c-6d1e-2f3a-4b5c6d1e2f3a",
+    "name": "J.K. Rowling",
+    "verified": true
+  }
+]

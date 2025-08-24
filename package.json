@@ -1,0 +1,64 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "description": "A GraphQL API developed using Node.js, Express.js, Apollo, OpenTelemetry, Zipkin, Neon",
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "Apollo",
+    "GraphQL",
+    "Neon",
+    "OpenTelemetry"
+  ],
+  "homepage": "https://github.com/srikanthkakumanu/node-graphql#readme",
+  "bugs": {
+    "url": "https://github.com/srikanthkakumanu/node-graphql/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srikanthkakumanu/node-graphql.git"
+  },
+  "license": "MIT",
+  "author": "Srikanth Kakumanu",
+  "type": "module",
+  "main": "api.js",
+  "scripts": {
+    "test": "test",
+    "start": "node src/api.js",
+    "dev": "node --watch src/api.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@neondatabase/serverless": "^1.0.1",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/api-logs": "^0.203.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.48.0",
+    "@opentelemetry/exporter-logs-otlp-http": "^0.52.1",
+    "@opentelemetry/exporter-metrics-otlp-http": "^0.52.1",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.52.1",
+    "@opentelemetry/exporter-zipkin": "^1.30.1",
+    "@opentelemetry/instrumentation-winston": "^0.39.0",
+    "@opentelemetry/resources": "^2.0.1",
+    "@opentelemetry/sdk-logs": "^0.203.0",
+    "@opentelemetry/sdk-metrics": "^2.0.1",
+    "@opentelemetry/sdk-node": "^0.52.1",
+    "@opentelemetry/semantic-conventions": "^1.36.0",
+    "@prisma/client": "^6.14.0",
+    "@prisma/extension-accelerate": "^2.0.2",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "prisma": "^6.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
