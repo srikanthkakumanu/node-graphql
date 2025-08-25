@@ -4,15 +4,26 @@ import { genreResolvers } from './genreResolver.js';
 import { reviewResolvers } from './reviewResolver.js';
 
 /**
- * Merges multiple resolver objects into one.
- * This is a simple merge; for deep merging, a utility like lodash.merge would be better.
- * @param {Array<object>} resolversArray - An array of resolver objects.
- * @returns {object} The merged resolver object.
+ * Merged resolver object for the Apollo Server.
+ * It combines queries, mutations, and type-specific resolvers
+ * from different resolver files into a single structure.
  */
-
-export const resolvers = mergeResolvers([
-  authorResolvers,
-  bookResolvers,
-  genreResolvers,
-  reviewResolvers,
-]);
+export const resolvers = {
+  Query: {
+    ...authorResolvers.Query,
+    ...bookResolvers.Query,
+    ...genreResolvers.Query,
+    ...reviewResolvers.Query,
+  },
+  Mutation: {
+    ...authorResolvers.Mutation,
+    ...bookResolvers.Mutation,
+    ...genreResolvers.Mutation,
+    ...reviewResolvers.Mutation,
+  },
+  // Type-specific resolvers
+  Author: authorResolvers.Author,
+  Book: bookResolvers.Book,
+  Genre: genreResolvers.Genre,
+  Review: reviewResolvers.Review,
+};
