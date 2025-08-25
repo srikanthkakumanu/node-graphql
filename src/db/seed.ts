@@ -1,5 +1,10 @@
+import { initOpenTelemetry } from '../middleware/telemetry/opentelemetry.js';
+// Initialize OpenTelemetry. This must be done before any other modules are imported.
+initOpenTelemetry();
+
 import { PrismaClient } from '@prisma/client';
 import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
 import path from 'path';
 
 type ModelKey = 'genre' | 'author' | 'book' | 'review';
@@ -12,6 +17,9 @@ const modelMap: Record<string, ModelKey> = {
 
 const prisma = new PrismaClient();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 async function seedFile(fileName: string) {
     const modelKey = modelMap[fileName];
     if (!modelKey) {
@@ -19,7 +27,7 @@ async function seedFile(fileName: string) {
         return;
     }
 
-    const dataDir = path.join(process.cwd(), 'config', 'data');
+    const dataDir = path.join(__dirname, '..', '..', 'config', 'data');
     const filePath = path.join(dataDir, fileName);
 
     let fileContent;
@@ -74,5 +82,13 @@ export async function seed() {
         console.log('Seeding finished.');
     } finally {
         await prisma.$disconnect();
+    }
+}
+
+// This block allows the script to be executed directly from the command line.
+if (import.meta.url.startsWith('file:')) {
+    const modulePath = fileURLToPath(import.meta.url);
+    if (process.argv[1] === modulePath) {
+        seed();
     }
 }

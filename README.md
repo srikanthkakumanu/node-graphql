@@ -1,15 +1,14 @@
 # node-graphql
 
-This repository demonstrates a simple but powerful API developed using GraphQL, Apollo, Node.js, and Express.js. It showcases modern development practices including a type-safe ORM with Prisma, functional error handling with Effect-TS, and distributed tracing with OpenTelemetry and Zipkin.
+This repository demonstrates a simple but powerful API developed using GraphQL, Apollo, Node.js, and Express.js. It showcases modern development practices including a type-safe ORM with Prisma, and distributed tracing with OpenTelemetry and New Relic.
 
 ## ✨ Features
 
 - **GraphQL API**: A fully-featured GraphQL API built with Apollo Server.
 - **CRUD Operations**: Complete Create, Read, Update, and Delete functionality for `Genre`, `Book`, `Author`, and `Review` entities.
 - **Type-Safe Database Access**: Uses Prisma as a next-generation ORM for robust and type-safe database queries.
-- **Functional Error Handling**: Leverages Effect-TS for managing asynchronous operations and errors in a functional, composable way.
 - **Observability**: Integrated with OpenTelemetry for generating and exporting traces.
-- **Distributed Tracing**: Configured to export traces to Zipkin, allowing for easy visualization of request flows.
+- **Distributed Tracing**: Configured to export traces, metrics, and logs to New Relic.
 - **Cloud-Ready**: Includes GCP-specific resource detectors, making it ready for deployment on Google Cloud Platform.
 
 ## 🛠️ Tech Stack
@@ -18,7 +17,7 @@ This repository demonstrates a simple but powerful API developed using GraphQL, 
 - **GraphQL**: Apollo Server
 - **ORM**: Prisma
 - **Observability**: OpenTelemetry
-- **Tracing Backend**: Zipkin
+- **Observability Backend**: New Relic
 
 ## 🚀 Getting Started
 
@@ -27,8 +26,8 @@ Follow these instructions to get the project up and running on your local machin
 ### Prerequisites
 
 - Node.js (LTS version recommended)
-- A running instance of a supported database (e.g., PostgreSQL, MySQL, SQLite). I have used Prisma Postgres
-- A running instance of Zipkin for viewing traces.
+- A running instance of a supported database (e.g., PostgreSQL).
+- A New Relic account and an Ingest - License key.
 
 ### Installation & Setup
 
@@ -47,10 +46,16 @@ Follow these instructions to get the project up and running on your local machin
 
 3.  **Configure your environment:**
     Create a `.env` file in the root of the project and add your database connection string. See `prisma/schema.prisma` for the database provider.
+    You also need to add your New Relic Ingest - License key.
 
     ```env
     # Example for PostgreSQL
     DATABASE_URL="postgresql://user:password@localhost:5432/mydb?schema=public"
+
+    # New Relic Ingest - License Key
+    NEW_RELIC_API_KEY="YOUR_NEW_RELIC_LICENSE_KEY"
+    # Set to EU if using New Relic's EU data center
+    # NEW_RELIC_REGION="EU"
     ```
 
 4.  **Run database migrations:**
@@ -68,10 +73,6 @@ Follow these instructions to get the project up and running on your local machin
 
 ### Running the Application
 
-- **Running Zipkin server:**
-  ```bash
-  bash docker run -d -p 9411:9411 openzipkin/zipkin
-  ```
 - **Start the server:**
   ```bash
   npm start

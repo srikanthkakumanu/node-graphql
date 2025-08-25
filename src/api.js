@@ -42,5 +42,5 @@ const { url } = await startStandaloneServer(server, {
     return { logger, loaders };
   },
 });
-
+logger.info(`🚀 Server ready at: ${url}`);
 console.log(`🚀 Server ready at: ${url}`);

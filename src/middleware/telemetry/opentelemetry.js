@@ -14,8 +14,23 @@ const {
   SemanticResourceAttributes,
 } = require('@opentelemetry/semantic-conventions');
 const SERVICE_NAME = process.env.OTEL_SERVICE_NAME || 'node-graphql-api';
-const NEW_RELIC_OTLP_ENDPOINT =
-  process.env.NEW_RELIC_OTLP_ENDPOINT || 'https://otlp.nr-data.net:4318';
+
+/**
+ * Determines the New Relic OTLP endpoint based on environment variables.
+ * @returns {string} The OTLP endpoint URL.
+ */
+const getNewRelicEndpoint = () => {
+  if (process.env.NEW_RELIC_OTLP_ENDPOINT) {
+    return process.env.NEW_RELIC_OTLP_ENDPOINT;
+  }
+  if (process.env.NEW_RELIC_REGION === 'EU') {
+    return 'https://otlp.eu01.nr-data.net:4318';
+  }
+  // Default to US endpoint
+  return 'https://otlp.nr-data.net:4318';
+};
+
+const NEW_RELIC_OTLP_ENDPOINT = getNewRelicEndpoint();
 
 /**
  * Initializes the OpenTelemetry SDK for Node.js.
