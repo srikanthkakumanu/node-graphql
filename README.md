@@ -121,3 +121,17 @@ This project is instrumented with OpenTelemetry to provide insights into applica
 
 - **Traces**: All incoming GraphQL requests and outgoing database queries are traced.
 - **Backend**: Traces are exported to Zipkin. Make sure your Zipkin instance is running. The default URL for the Zipkin UI is `http://localhost:9411`.
+
+## .env
+
+```properties
+PORT=3333
+# Prisma cloud DB and ORM
+DATABASE_URL="prisma+postgres://accelerate.prisma-data.net/?api_key=<api-key>"
+NEW_RELIC_API_KEY="eu01NRAL"
+OTEL_SERVICE_NAME="books-graphql"
+NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
+NEW_RELIC_LOGS_INJECTION=true
+NEW_RELIC_OTLP_ENDPOINT="https://otlp.eu01.nr-data.net:4318"
+NEW_RELIC_REGION="EU"
+```
